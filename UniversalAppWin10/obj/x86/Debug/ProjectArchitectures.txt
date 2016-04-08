@@ -1,2 +1,0 @@
-C:\SourcesGitHub\AgenceImmobiliere\Core\Core.csproj;neutral
-C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\UniversalAppWin10.csproj;x86
