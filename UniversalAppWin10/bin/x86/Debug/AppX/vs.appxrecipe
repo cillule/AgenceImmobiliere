@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-09T08:56:15.734</Modified>
+      <Modified>2016-04-08T10:11:03.880</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
       <PackagePath>entrypoint\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe</PackagePath>
-      <Modified>2016-03-09T08:56:15.104</Modified>
+      <Modified>2016-04-08T10:11:03.393</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\loicm\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -456,7 +456,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\Oyosoft.AgenceImmobiliere.Core.dll">
       <PackagePath>Oyosoft.AgenceImmobiliere.Core.dll</PackagePath>
-      <Modified>2016-03-09T08:54:41.012</Modified>
+      <Modified>2016-04-08T10:11:00.662</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\PCLStorage.Abstractions.dll">
       <PackagePath>PCLStorage.Abstractions.dll</PackagePath>
@@ -526,11 +526,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-03-09T08:56:15.602</Modified>
+      <Modified>2016-04-05T12:36:52.991</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Core\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
       <PackagePath>Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe</PackagePath>
-      <Modified>2016-03-09T08:56:15.733</Modified>
+      <Modified>2016-04-08T10:11:03.871</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

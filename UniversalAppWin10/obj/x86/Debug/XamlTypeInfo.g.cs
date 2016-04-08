@@ -132,7 +132,7 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[33];
+            _typeNameTable = new string[34];
             _typeNameTable[0] = "Oyosoft.AgenceImmobiliere.UniversalAppWin10.Converters.ObjectToStringConverter";
             _typeNameTable[1] = "Oyosoft.AgenceImmobiliere.Core.Converters.ObjectToStringConverter";
             _typeNameTable[2] = "Object";
@@ -154,20 +154,21 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
             _typeNameTable[18] = "Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase";
             _typeNameTable[19] = "Int64";
             _typeNameTable[20] = "String";
-            _typeNameTable[21] = "Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList";
-            _typeNameTable[22] = "System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>";
-            _typeNameTable[23] = "System.Collections.ObjectModel.Collection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>";
-            _typeNameTable[24] = "Oyosoft.AgenceImmobiliere.Core.Tools.Error";
-            _typeNameTable[25] = "Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType";
-            _typeNameTable[26] = "System.Enum";
-            _typeNameTable[27] = "System.ValueType";
-            _typeNameTable[28] = "System.Exception";
-            _typeNameTable[29] = "Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand`1<System.EventArgs>";
-            _typeNameTable[30] = "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs`1<System.EventArgs>>";
-            _typeNameTable[31] = "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.Command>";
-            _typeNameTable[32] = "Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage";
+            _typeNameTable[21] = "System.Array";
+            _typeNameTable[22] = "Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList";
+            _typeNameTable[23] = "System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>";
+            _typeNameTable[24] = "System.Collections.ObjectModel.Collection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>";
+            _typeNameTable[25] = "Oyosoft.AgenceImmobiliere.Core.Tools.Error";
+            _typeNameTable[26] = "Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType";
+            _typeNameTable[27] = "System.Enum";
+            _typeNameTable[28] = "System.ValueType";
+            _typeNameTable[29] = "System.Exception";
+            _typeNameTable[30] = "Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand`1<System.EventArgs>";
+            _typeNameTable[31] = "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs`1<System.EventArgs>>";
+            _typeNameTable[32] = "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<System.Windows.Input.ICommand>";
+            _typeNameTable[33] = "Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage";
 
-            _typeTable = new global::System.Type[33];
+            _typeTable = new global::System.Type[34];
             _typeTable[0] = typeof(global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.Converters.ObjectToStringConverter);
             _typeTable[1] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Converters.ObjectToStringConverter);
             _typeTable[2] = typeof(global::System.Object);
@@ -189,18 +190,19 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
             _typeTable[18] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase);
             _typeTable[19] = typeof(global::System.Int64);
             _typeTable[20] = typeof(global::System.String);
-            _typeTable[21] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList);
-            _typeTable[22] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>);
-            _typeTable[23] = typeof(global::System.Collections.ObjectModel.Collection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>);
-            _typeTable[24] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Tools.Error);
-            _typeTable[25] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType);
-            _typeTable[26] = typeof(global::System.Enum);
-            _typeTable[27] = typeof(global::System.ValueType);
-            _typeTable[28] = typeof(global::System.Exception);
-            _typeTable[29] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand<global::System.EventArgs>);
-            _typeTable[30] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.Command<global::Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs<global::System.EventArgs>>);
-            _typeTable[31] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.Command<global::Oyosoft.AgenceImmobiliere.Core.Commands.Command>);
-            _typeTable[32] = typeof(global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage);
+            _typeTable[21] = typeof(global::System.Array);
+            _typeTable[22] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList);
+            _typeTable[23] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>);
+            _typeTable[24] = typeof(global::System.Collections.ObjectModel.Collection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>);
+            _typeTable[25] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Tools.Error);
+            _typeTable[26] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType);
+            _typeTable[27] = typeof(global::System.Enum);
+            _typeTable[28] = typeof(global::System.ValueType);
+            _typeTable[29] = typeof(global::System.Exception);
+            _typeTable[30] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand<global::System.EventArgs>);
+            _typeTable[31] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.Command<global::Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs<global::System.EventArgs>>);
+            _typeTable[32] = typeof(global::Oyosoft.AgenceImmobiliere.Core.Commands.Command<global::System.Windows.Input.ICommand>);
+            _typeTable[33] = typeof(global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -245,11 +247,11 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
         private object Activate_15_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur>(); }
         private object Activate_16_Collection() { return new global::System.Collections.ObjectModel.Collection<global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur>(); }
         private object Activate_17_Utilisateur() { return new global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur(); }
-        private object Activate_21_ErrorsList() { return new global::Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList(); }
-        private object Activate_22_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>(); }
-        private object Activate_23_Collection() { return new global::System.Collections.ObjectModel.Collection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>(); }
-        private object Activate_28_Exception() { return new global::System.Exception(); }
-        private object Activate_32_MainPage() { return new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage(); }
+        private object Activate_22_ErrorsList() { return new global::Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList(); }
+        private object Activate_23_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>(); }
+        private object Activate_24_Collection() { return new global::System.Collections.ObjectModel.Collection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>(); }
+        private object Activate_29_Exception() { return new global::System.Exception(); }
+        private object Activate_33_MainPage() { return new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage(); }
         private void VectorAdd_15_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur>)instance;
@@ -262,19 +264,19 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
             var newItem = (global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_21_ErrorsList(object instance, object item)
+        private void VectorAdd_22_ErrorsList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>)instance;
             var newItem = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_22_ObservableCollection(object instance, object item)
+        private void VectorAdd_23_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>)instance;
             var newItem = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_23_Collection(object instance, object item)
+        private void VectorAdd_24_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Oyosoft.AgenceImmobiliere.Core.Tools.Error>)instance;
             var newItem = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)item;
@@ -420,6 +422,7 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
             case 18:   //  Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.BaseNotifyPropertyChanged"));
                 userType.AddMemberName("Id");
+                userType.AddMemberName("ListeChamps");
                 xamlType = userType;
                 break;
 
@@ -431,28 +434,34 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
                 xamlType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 21:   //  Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList
-                userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>"));
-                userType.CollectionAdd = VectorAdd_21_ErrorsList;
+            case 21:   //  System.Array
+                userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 22:   //  System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>
+            case 22:   //  Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList
+                userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>"));
+                userType.CollectionAdd = VectorAdd_22_ErrorsList;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 23:   //  System.Collections.ObjectModel.ObservableCollection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>"));
-                userType.Activator = Activate_22_ObservableCollection;
-                userType.CollectionAdd = VectorAdd_22_ObservableCollection;
+                userType.Activator = Activate_23_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_23_ObservableCollection;
                 xamlType = userType;
                 break;
 
-            case 23:   //  System.Collections.ObjectModel.Collection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>
+            case 24:   //  System.Collections.ObjectModel.Collection`1<Oyosoft.AgenceImmobiliere.Core.Tools.Error>
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_23_Collection;
-                userType.CollectionAdd = VectorAdd_23_Collection;
+                userType.Activator = Activate_24_Collection;
+                userType.CollectionAdd = VectorAdd_24_Collection;
                 xamlType = userType;
                 break;
 
-            case 24:   //  Oyosoft.AgenceImmobiliere.Core.Tools.Error
+            case 25:   //  Oyosoft.AgenceImmobiliere.Core.Tools.Error
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.BaseNotifyPropertyChanged"));
                 userType.AddMemberName("Type");
                 userType.AddMemberName("Exception");
@@ -460,49 +469,49 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
                 xamlType = userType;
                 break;
 
-            case 25:   //  Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType
+            case 26:   //  Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Message", global::Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType.Message);
                 userType.AddEnumValue("Exception", global::Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType.Exception);
                 xamlType = userType;
                 break;
 
-            case 26:   //  System.Enum
+            case 27:   //  System.Enum
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 27:   //  System.ValueType
+            case 28:   //  System.ValueType
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 28:   //  System.Exception
+            case 29:   //  System.Exception
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 29:   //  Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand`1<System.EventArgs>
+            case 30:   //  Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand`1<System.EventArgs>
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs`1<System.EventArgs>>"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 30:   //  Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs`1<System.EventArgs>>
+            case 31:   //  Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingArgs`1<System.EventArgs>>
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 31:   //  Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.Command>
+            case 32:   //  Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<System.Windows.Input.ICommand>
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 32:   //  Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage
+            case 33:   //  Oyosoft.AgenceImmobiliere.UniversalAppWin10.MainPage
                 userType = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_32_MainPage;
+                userType.Activator = Activate_33_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -571,77 +580,82 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
             var that = (global::Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase)instance;
             return that.Id;
         }
-        private object get_11_Connection_Utilisateur(object instance)
+        private object get_11_ModeleBase_ListeChamps(object instance)
+        {
+            var that = (global::Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase)instance;
+            return that.ListeChamps;
+        }
+        private object get_12_Connection_Utilisateur(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.Utilisateur;
         }
-        private void set_11_Connection_Utilisateur(object instance, object Value)
+        private void set_12_Connection_Utilisateur(object instance, object Value)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             that.Utilisateur = (global::Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur)Value;
         }
-        private object get_12_Connection_MotDePasse(object instance)
+        private object get_13_Connection_MotDePasse(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.MotDePasse;
         }
-        private void set_12_Connection_MotDePasse(object instance, object Value)
+        private void set_13_Connection_MotDePasse(object instance, object Value)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             that.MotDePasse = (global::System.String)Value;
         }
-        private object get_13_Connection_UtilisateurEstConnecte(object instance)
+        private object get_14_Connection_UtilisateurEstConnecte(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.UtilisateurEstConnecte;
         }
-        private object get_14_Connection_ConnexionVisible(object instance)
+        private object get_15_Connection_ConnexionVisible(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.ConnexionVisible;
         }
-        private object get_15_Connection_DeconnexionVisible(object instance)
+        private object get_16_Connection_DeconnexionVisible(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.DeconnexionVisible;
         }
-        private object get_16_Connection_Erreurs(object instance)
+        private object get_17_Connection_Erreurs(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.Erreurs;
         }
-        private object get_17_Error_Type(object instance)
+        private object get_18_Error_Type(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)instance;
             return that.Type;
         }
-        private object get_18_Error_Exception(object instance)
+        private object get_19_Error_Exception(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)instance;
             return that.Exception;
         }
-        private object get_19_Error_Message(object instance)
+        private object get_20_Error_Message(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.Tools.Error)instance;
             return that.Message;
         }
-        private object get_20_Connection_Avertissements(object instance)
+        private object get_21_Connection_Avertissements(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.Avertissements;
         }
-        private object get_21_Connection_InitializeCommand(object instance)
+        private object get_22_Connection_InitializeCommand(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.InitializeCommand;
         }
-        private object get_22_Connection_ConnectUserCommand(object instance)
+        private object get_23_Connection_ConnectUserCommand(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.ConnectUserCommand;
         }
-        private object get_23_Connection_DisconnectUserCommand(object instance)
+        private object get_24_Connection_DisconnectUserCommand(object instance)
         {
             var that = (global::Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection)instance;
             return that.DisconnectUserCommand;
@@ -720,82 +734,88 @@ namespace Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlType
                 xamlMember.Getter = get_10_ModeleBase_Id;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase.ListeChamps":
+                userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.Model.ModeleBase");
+                xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "ListeChamps", "System.Array");
+                xamlMember.Getter = get_11_ModeleBase_ListeChamps;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.Utilisateur":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Utilisateur", "Oyosoft.AgenceImmobiliere.Core.Model.Utilisateur");
-                xamlMember.Getter = get_11_Connection_Utilisateur;
-                xamlMember.Setter = set_11_Connection_Utilisateur;
+                xamlMember.Getter = get_12_Connection_Utilisateur;
+                xamlMember.Setter = set_12_Connection_Utilisateur;
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.MotDePasse":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "MotDePasse", "String");
-                xamlMember.Getter = get_12_Connection_MotDePasse;
-                xamlMember.Setter = set_12_Connection_MotDePasse;
+                xamlMember.Getter = get_13_Connection_MotDePasse;
+                xamlMember.Setter = set_13_Connection_MotDePasse;
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.UtilisateurEstConnecte":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "UtilisateurEstConnecte", "Boolean");
-                xamlMember.Getter = get_13_Connection_UtilisateurEstConnecte;
+                xamlMember.Getter = get_14_Connection_UtilisateurEstConnecte;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.ConnexionVisible":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "ConnexionVisible", "Boolean");
-                xamlMember.Getter = get_14_Connection_ConnexionVisible;
+                xamlMember.Getter = get_15_Connection_ConnexionVisible;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.DeconnexionVisible":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "DeconnexionVisible", "Boolean");
-                xamlMember.Getter = get_15_Connection_DeconnexionVisible;
+                xamlMember.Getter = get_16_Connection_DeconnexionVisible;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.Erreurs":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Erreurs", "Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList");
-                xamlMember.Getter = get_16_Connection_Erreurs;
+                xamlMember.Getter = get_17_Connection_Erreurs;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.Tools.Error.Type":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.Tools.Error");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Type", "Oyosoft.AgenceImmobiliere.Core.Enums.ErrorType");
-                xamlMember.Getter = get_17_Error_Type;
+                xamlMember.Getter = get_18_Error_Type;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.Tools.Error.Exception":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.Tools.Error");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Exception", "System.Exception");
-                xamlMember.Getter = get_18_Error_Exception;
+                xamlMember.Getter = get_19_Error_Exception;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.Tools.Error.Message":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.Tools.Error");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Message", "String");
-                xamlMember.Getter = get_19_Error_Message;
+                xamlMember.Getter = get_20_Error_Message;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.Avertissements":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "Avertissements", "Oyosoft.AgenceImmobiliere.Core.Tools.ErrorsList");
-                xamlMember.Getter = get_20_Connection_Avertissements;
+                xamlMember.Getter = get_21_Connection_Avertissements;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.InitializeCommand":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
                 xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "InitializeCommand", "Oyosoft.AgenceImmobiliere.Core.Commands.EventBindingCommand`1<System.EventArgs>");
-                xamlMember.Getter = get_21_Connection_InitializeCommand;
+                xamlMember.Getter = get_22_Connection_InitializeCommand;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.ConnectUserCommand":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
-                xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "ConnectUserCommand", "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.Command>");
-                xamlMember.Getter = get_22_Connection_ConnectUserCommand;
+                xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "ConnectUserCommand", "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<System.Windows.Input.ICommand>");
+                xamlMember.Getter = get_23_Connection_ConnectUserCommand;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection.DisconnectUserCommand":
                 userType = (global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Oyosoft.AgenceImmobiliere.Core.ViewModels.Connection");
-                xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "DisconnectUserCommand", "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<Oyosoft.AgenceImmobiliere.Core.Commands.Command>");
-                xamlMember.Getter = get_23_Connection_DisconnectUserCommand;
+                xamlMember = new global::Oyosoft.AgenceImmobiliere.UniversalAppWin10.UniversalAppWin10_XamlTypeInfo.XamlMember(this, "DisconnectUserCommand", "Oyosoft.AgenceImmobiliere.Core.Commands.Command`1<System.Windows.Input.ICommand>");
+                xamlMember.Getter = get_24_Connection_DisconnectUserCommand;
                 xamlMember.SetIsReadOnly();
                 break;
             }

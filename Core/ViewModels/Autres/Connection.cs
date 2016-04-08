@@ -38,8 +38,8 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
         protected ErrorsList _warnings;
 
         private EventBindingCommand<EventArgs> _initializeCommand;
-        private Command<Command> _connectUserCommand;
-        private Command<Command> _disconnectUserCommand;
+        private Command<ICommand> _connectUserCommand;
+        private Command<ICommand> _disconnectUserCommand;
 
 
         public bool TraitementEnCours
@@ -130,18 +130,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
                 return _initializeCommand ?? (_initializeCommand = new EventBindingCommand<EventArgs>(async arg => await Initialize(arg) ));
             }
         }
-        public Command<Command> ConnectUserCommand
+        public Command<ICommand> ConnectUserCommand
         {
             get
             {
-                return _connectUserCommand ?? (_connectUserCommand = new Command<Command>(async (cmd) => await ConnectUser(cmd)));
+                return _connectUserCommand ?? (_connectUserCommand = new Command<ICommand>(async (cmd) => await ConnectUser(cmd)));
             }
         }
-        public Command<Command> DisconnectUserCommand
+        public Command<ICommand> DisconnectUserCommand
         {
             get
             {
-                return _disconnectUserCommand ?? (_disconnectUserCommand = new Command<Command>(async (cmd) => await DisconnectUser(cmd)));
+                return _disconnectUserCommand ?? (_disconnectUserCommand = new Command<ICommand>(async (cmd) => await DisconnectUser(cmd)));
             }
         }
 
@@ -201,7 +201,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             this.TraitementEnCours = false;
         }
 
-        public async Task ConnectUser(Command redirectCommand)
+        public async Task ConnectUser(ICommand redirectCommand)
         {
             if (UtilisateurEstConnecte && (_user == null || _user.NomUtilisateur.ToUpper() != _localConnection.ConnectedUserName.ToUpper())) return;
             if (UtilisateurEstConnecte)
@@ -281,11 +281,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             if (this.Erreurs.IsEmpty && redirectCommand != null)
             {
-                await redirectCommand.ExecuteAsync(null);
+                if (redirectCommand.GetType() == typeof(Command))
+                {
+                    await ((Command)redirectCommand).ExecuteAsync(null);
+                }
+                else
+                {
+                    redirectCommand.Execute(null);
+                }
             }
         }
 
-        public async Task DisconnectUser(Command redirectCommand)
+        public async Task DisconnectUser(ICommand redirectCommand)
         {
             if (!UtilisateurEstConnecte) return;
 
@@ -328,7 +335,14 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             if (this.Erreurs.IsEmpty && redirectCommand != null)
             {
-                await redirectCommand.ExecuteAsync(null);
+                if (redirectCommand.GetType() == typeof(Command))
+                {
+                    await ((Command)redirectCommand).ExecuteAsync(null);
+                }
+                else
+                {
+                    redirectCommand.Execute(null);
+                }
             }
         }
 

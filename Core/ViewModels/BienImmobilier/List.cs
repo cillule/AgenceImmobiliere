@@ -27,9 +27,9 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
 
         private EventBindingCommand<EventArgs> _initializeCommand;
         private Command<long?> _loadListCommand;
-        private Command<Command> _modifySearchCriteriaCommand;
-        private Command<Command> _addBienCommand;
-        private Command<Command> _modifyBienCommand;
+        private Command<ICommand> _modifySearchCriteriaCommand;
+        private Command<ICommand> _addBienCommand;
+        private Command<ICommand> _modifyBienCommand;
         private Command<Func<bool>> _deleteBienCommand;
 
         public bool InitialisationTerminee
@@ -118,25 +118,25 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
                 return _loadListCommand ?? (_loadListCommand = new Command<long?>(async (currentPage) => await LoadList(currentPage)));
             }
         }
-        public Command<Command> ModifySearchCriteriaCommand
+        public Command<ICommand> ModifySearchCriteriaCommand
         {
             get
             {
-                return _modifySearchCriteriaCommand ?? (_modifySearchCriteriaCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, this)));
+                return _modifySearchCriteriaCommand ?? (_modifySearchCriteriaCommand = new Command<ICommand>(async (cmd) => await ExecuteCommand(cmd, this)));
             }
         }
-        public Command<Command> AddBienCommand
+        public Command<ICommand> AddBienCommand
         {
             get
             {
-                return _addBienCommand ?? (_addBienCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, null)));
+                return _addBienCommand ?? (_addBienCommand = new Command<ICommand>(async (cmd) => await ExecuteCommand(cmd, null)));
             }
         }
-        public Command<Command> ModifyBienCommand
+        public Command<ICommand> ModifyBienCommand
         {
             get
             {
-                return _modifyBienCommand ?? (_modifyBienCommand = new Command<Command>(async (cmd) =>
+                return _modifyBienCommand ?? (_modifyBienCommand = new Command<ICommand>(async (cmd) =>
                 {
                     if (this.BienEstSelectionne) await ExecuteCommand(cmd, this.BienSelectionne);
                 }, (cmd) => {
@@ -183,11 +183,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
             this.ChargementListeEnCours = false;
         }
 
-        public async Task ExecuteCommand(Command cmd, object parameter)
+        public async Task ExecuteCommand(ICommand cmd, object parameter)
         {
             if (cmd != null)
-            {
-                await cmd.ExecuteAsync(parameter);
+            { 
+                if (cmd.GetType() == typeof(Command))
+                {
+                    await ((Command)cmd).ExecuteAsync(parameter);
+                }
+                else
+                {
+                    cmd.Execute(parameter);
+                }
             }
         }
 
