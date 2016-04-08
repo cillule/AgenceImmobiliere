@@ -1,0 +1,608 @@
+﻿<Window x:Class="Oyosoft.AgenceImmobiliere.WpfClient.FiltresBiensWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient"
+        xmlns:converters="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient.Converters"
+        xmlns:params="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient.Converters.Parameters"
+        xmlns:core="clr-namespace:Oyosoft.AgenceImmobiliere.Core;assembly=Oyosoft.AgenceImmobiliere.Core"
+        xmlns:viewmodels="clr-namespace:Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier;assembly=Oyosoft.AgenceImmobiliere.Core"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Filtres" Height="600" Width="900"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        ShowInTaskbar="False">
+    <Window.Resources>
+        <converters:ComboBoxEmptyItemConverter x:Key="cbConverter" />
+        <converters:TextBoxNumericConverter x:Key="txtConverter" />
+        <converters:RadioButtonConverter x:Key="rbtnConverter" />
+
+        <Style x:Key="border" TargetType="Border">
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+        <Style x:Key="borderBottom" TargetType="Border" BasedOn="{StaticResource border}">
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+        </Style>
+        <Style x:Key="borderTop" TargetType="Border" BasedOn="{StaticResource border}">
+            <Setter Property="BorderThickness" Value="0,1,0,0" />
+        </Style>
+
+        <Style x:Key="textBox" TargetType="TextBox">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="numericTextBox" TargetType="TextBox" BasedOn="{StaticResource textBox}">
+            <Setter Property="Width" Value="60" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+        </Style>
+        <Style x:Key="intTextBox" TargetType="TextBox" BasedOn="{StaticResource numericTextBox}">
+            <EventSetter Event="PreviewTextInput" Handler="IntValidationTextBox" />
+        </Style>
+        <Style x:Key="doubleTextBox" TargetType="TextBox" BasedOn="{StaticResource numericTextBox}">
+            <EventSetter Event="PreviewTextInput" Handler="DoubleValidationTextBox" />
+        </Style>
+
+        <Style x:Key="uniteTextBlock" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="2,0,0,0" />
+        </Style>
+        <Style x:Key="euroTextBlock" TargetType="TextBlock" BasedOn="{StaticResource uniteTextBlock}">
+            <Setter Property="Text" Value="€" />
+        </Style>
+        <Style x:Key="metreTextBlock" TargetType="TextBlock" BasedOn="{StaticResource uniteTextBlock}">
+            <Setter Property="Text" Value="m²" />
+        </Style>
+
+        <Style x:Key="libelleTextBlock" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="enumComboBox" TargetType="ComboBox">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="datePicker" TargetType="DatePicker">
+            <Setter Property="Width" Value="90" />
+        </Style>
+
+        <Style x:Key="radioButton" TargetType="RadioButton">
+            <Setter Property="GroupName" Value="Transaction" />
+            <Setter Property="Margin" Value="0,0,10,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="Margin" Value="0,10,10,0" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="23" />
+        </Style>
+
+
+        <ObjectDataProvider x:Key="TypesBienProvider"
+                            MethodName="GetValues" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="core:Enums+TypeBien" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="TypesChauffageProvider"
+                            MethodName="GetValues" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="core:Enums+TypeChauffage" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="EnergiesChauffageProvider"
+                            MethodName="GetValues" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="core:Enums+EnergieChauffage" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="OrdreTriProvider"
+                            MethodName="GetValues" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="core:Enums+OrdreTri" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewmodels:SearchCriteria />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="140"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="15"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--1ère ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Prix propriétaire entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource doubleTextBox}"
+                         Text="{Binding PrixProprietaire1, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource euroTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource doubleTextBox}"
+                         Text="{Binding PrixProprietaire1, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource euroTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="6"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Type de bien :" />
+        </Border>
+        <Border Grid.Column="7"
+                Grid.ColumnSpan="3"
+                Grid.Row="1"
+                Style="{StaticResource borderBottom}">
+            <ComboBox Style="{StaticResource enumComboBox}"
+                      ItemsSource="{Binding Source={StaticResource TypesBienProvider}, Converter={StaticResource cbConverter}}"
+                      SelectedValue="{Binding TypeBien, Converter={StaticResource cbConverter}}"/>
+        </Border>
+
+        <!--2ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Montant des chages entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource doubleTextBox}"
+                         Text="{Binding MontantCharges1, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource euroTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource doubleTextBox}"
+                         Text="{Binding MontantCharges2, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource euroTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="6"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Type de chauffage :" />
+        </Border>
+        <Border Grid.Column="7"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                Style="{StaticResource borderBottom}">
+            <ComboBox Style="{StaticResource enumComboBox}"
+                      ItemsSource="{Binding Source={StaticResource TypesChauffageProvider}, Converter={StaticResource cbConverter}}"
+                      SelectedValue="{Binding TypeChauffage, Converter={StaticResource cbConverter}}" />
+        </Border>
+
+        <!--3ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Surface entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource intTextBox}"
+                         Text="{Binding Surface1, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource metreTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Style="{StaticResource intTextBox}"
+                         Text="{Binding Surface2, Converter={StaticResource txtConverter}, ConverterParameter='double'}" />
+                <TextBlock Style="{StaticResource metreTextBlock}" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="6"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Energie du chauffage :" />
+        </Border>
+        <Border Grid.Column="7"
+                Grid.ColumnSpan="3"
+                Grid.Row="3"
+                Style="{StaticResource borderBottom}">
+            <ComboBox Style="{StaticResource enumComboBox}"
+                      ItemsSource="{Binding Source={StaticResource EnergiesChauffageProvider}, Converter={StaticResource cbConverter}}"
+                      SelectedValue="{Binding EnergieChauffage, Converter={StaticResource cbConverter}}" />
+        </Border>
+
+        <!--4ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="4"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Nombre de pièces entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="4"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NbPieces1, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="4"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="4"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NbPieces2, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+
+        <!--5ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="5"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Numéro de l'étage entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="5"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NumEtage1, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="5"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="5"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NumEtage2, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+
+        <!--6ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="6"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Nombre d'étages entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="6"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NbEtages1, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="6"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="6"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     Text="{Binding NbEtages2, Converter={StaticResource txtConverter}, ConverterParameter='int'}" />
+        </Border>
+        <Border Grid.Column="5"
+                Grid.ColumnSpan="5"
+                Grid.Row="6"
+                Style="{StaticResource borderBottom}">
+        </Border>
+
+        <!--7ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="7"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Titre contenant :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.ColumnSpan="8"
+                Grid.Row="7"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource textBox}"
+                     Text="{Binding TitreContient}" />
+        </Border>
+
+        <!--8ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="8"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Description contenant :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.ColumnSpan="8"
+                Grid.Row="8"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource textBox}"
+                     Text="{Binding DescriptionContient}" />
+        </Border>
+
+        <!--9ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Adresse contenant :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.ColumnSpan="4"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource textBox}"
+                     Text="{Binding AdresseContient}" />
+        </Border>
+        <Border Grid.Column="6"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Code postal :" />
+        </Border>
+        <Border Grid.Column="7"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource intTextBox}"
+                     HorizontalAlignment="Left"
+                     TextAlignment="Left"
+                     MaxLength="5"
+                     Text="{Binding CodePostal}" />
+        </Border>
+        <Border Grid.Column="8"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Ville :" />
+        </Border>
+        <Border Grid.Column="9"
+                Grid.Row="9"
+                Style="{StaticResource borderBottom}">
+            <TextBox Style="{StaticResource textBox}"
+                     CharacterCasing="Upper"
+                     Text="{Binding Ville}" />
+        </Border>
+
+        <!--10ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="10"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Date de mise en transaction entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="10"
+                Style="{StaticResource borderBottom}">
+            <DatePicker Style="{StaticResource datePicker}" 
+                        SelectedDate="{Binding DateMiseEnTransaction1}" x:Name="dteMiseEnTransaction1" />
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="10"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="10"
+                Style="{StaticResource borderBottom}">
+            <DatePicker Style="{StaticResource datePicker}" 
+                        SelectedDate="{Binding DateMiseEnTransaction2}"
+                        DisplayDateStart="{Binding ElementName=dteMiseEnTransaction1, Path=SelectedDate}"/>
+        </Border>
+
+        <!--11ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="11"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Transaction effectuée :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Grid.Row="11"
+                Style="{StaticResource borderBottom}">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Style="{StaticResource radioButton}"
+                             IsChecked="{Binding TransactionEffectuee, Converter={StaticResource rbtnConverter}, ConverterParameter='oui'}"
+                             Content="Oui"/>
+                <RadioButton Style="{StaticResource radioButton}"
+                             IsChecked="{Binding TransactionEffectuee, Converter={StaticResource rbtnConverter}, ConverterParameter='non'}"
+                             Content="Non" />
+                <RadioButton Style="{StaticResource radioButton}"
+                             IsChecked="{Binding TransactionEffectuee, Converter={StaticResource rbtnConverter}, ConverterParameter='null'}"
+                             Content="Non affecté" />
+            </StackPanel>
+        </Border>
+
+        <!--12ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="12"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Date de la transaction entre :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="12"
+                Style="{StaticResource borderBottom}">
+            <DatePicker Style="{StaticResource datePicker}" 
+                        SelectedDate="{Binding DateTransaction1}" x:Name="dteTransaction1" />
+        </Border>
+        <Border Grid.Column="3"
+                Grid.Row="12"
+                Style="{StaticResource borderBottom}">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="et :" />
+        </Border>
+        <Border Grid.Column="4"
+                Grid.Row="12"
+                Style="{StaticResource borderBottom}">
+            <DatePicker Style="{StaticResource datePicker}" 
+                        SelectedDate="{Binding DateTransaction2}"
+                        DisplayDateStart="{Binding ElementName=dteTransaction1, Path=SelectedDate}"/>
+        </Border>
+        <Border Grid.Column="5"
+                Grid.ColumnSpan="2"
+                Grid.Row="12"
+                Style="{StaticResource borderBottom}">
+        </Border>
+
+        <!--13ème ligne-->
+        <Border Grid.Column="1"
+                Grid.Row="13"
+                Style="{StaticResource borderBottom}"
+                BorderThickness="0">
+            <TextBlock Style="{StaticResource libelleTextBlock}"
+                       Text="Trier par :" />
+        </Border>
+        <Border Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Grid.Row="13"
+                Style="{StaticResource borderBottom}"
+                BorderThickness="0">
+            <ComboBox Style="{StaticResource enumComboBox}"
+                      ItemsSource="{Binding ListeChamps, Converter={StaticResource cbConverter}}"
+                      SelectedValue="{Binding TriPrincipal.Field, Mode=TwoWay}"
+                      Width="220" x:Name="cbChampTri"/>
+        </Border>
+        <Border Grid.Column="5"
+                Grid.ColumnSpan="2"
+                Grid.Row="13"
+                Style="{StaticResource borderBottom}"
+                BorderThickness="0">
+            <ComboBox Style="{StaticResource enumComboBox}"
+                      ItemsSource="{Binding Source={StaticResource OrdreTriProvider}}"
+                      SelectedValue="{Binding TriPrincipal.Order, Mode=TwoWay}"
+                      Width="140" x:Name="cbOrdreTri"/>
+        </Border>
+
+        <!--15ème ligne-->
+        <Border Grid.Column="1"
+                Grid.ColumnSpan="9"
+                Grid.Row="15"
+                Style="{StaticResource borderTop}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Style="{StaticResource button}" 
+                        Content="Appliquer"
+                        IsDefault="True"
+                        Command="{Binding AppliquerCommand}">
+                    <Button.Resources>
+                        <params:CloseWindowConverter x:Key="closeWindowConverter" />
+                        <sys:Boolean x:Key="windowResult">true</sys:Boolean>
+                        <sys:String x:Key="propertyName">CriteresRecherche</sys:String>
+                    </Button.Resources>
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource closeWindowConverter}">
+                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+                            <Binding Source="{StaticResource windowResult}" />
+                            <Binding Source="{StaticResource propertyName}" />
+                            <Binding />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Style="{StaticResource button}" 
+                        Content="Vider"
+                        Command="{Binding ViderFiltresCommand}"/>
+                <Button Style="{StaticResource button}"
+                        Content="Annuler"
+                        IsCancel="True"
+                        Command="{Binding AnnulerCommand}">
+                    <Button.Resources>
+                        <params:CloseWindowConverter x:Key="closeWindowConverter" />
+                        <sys:Boolean x:Key="windowResult">false</sys:Boolean>
+                    </Button.Resources>
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource closeWindowConverter}">
+                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+                            <Binding Source="{StaticResource windowResult}" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
