@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -18,23 +18,23 @@ namespace Oyosoft.AgenceImmobiliere.WpfClient.Converters.Parameters
         {
             if (values.Length < 2) return values;
 
-            _currentWindow = (Window)values[0];
-            _text = (string)values[1];
+            //_currentWindow = (Window)values[0];
+            //_text = (string)values[1];
 
-            _title = _currentWindow.Title;
-            if (values.Length >= 3) _title = (string)values[2];
+            //_title = _currentWindow.Title;
+            //if (values.Length >= 3) _title = (string)values[2];
 
-            _buttons = MessageBoxButton.OK;
-            if (values.Length >= 4) _buttons = (MessageBoxButton)values[3];
+            //_buttons = MessageBoxButton.OK;
+            //if (values.Length >= 4) _buttons = (MessageBoxButton)values[3];
 
-            _image = MessageBoxImage.None;
-            if (values.Length >= 5) _image = (MessageBoxImage)values[4];
+            //_image = MessageBoxImage.None;
+            //if (values.Length >= 5) _image = (MessageBoxImage)values[4];
 
-            _defaultResult = MessageBoxResult.OK;
-            if (values.Length >= 6) _defaultResult = (MessageBoxResult)values[5];
+            //_defaultResult = MessageBoxResult.OK;
+            //if (values.Length >= 6) _defaultResult = (MessageBoxResult)values[5];
 
-            _acceptResult = MessageBoxResult.OK;
-            if (values.Length >= 7) _acceptResult = (MessageBoxResult)values[6];
+            //_acceptResult = MessageBoxResult.OK;
+            //if (values.Length >= 7) _acceptResult = (MessageBoxResult)values[6];
 
             return new EventBindingCommand<TextCompositionEventArgs>(ValidationTextBox);
         }

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Oyosoft.AgenceImmobiliere.Core.Commands;
 using Oyosoft.AgenceImmobiliere.Core.DataAccess;
 
@@ -44,8 +45,8 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
         protected DateTime? _dateTransaction2;
 
         private Command _viderFiltresCommand;
-        private Command<Command> _appliquerCommand;
-        private Command<Command> _annulerCommand;
+        private Command<ICommand> _appliquerCommand;
+        private Command<ICommand> _annulerCommand;
 
         #endregion
 
@@ -313,18 +314,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
                 return _viderFiltresCommand ?? (_viderFiltresCommand = new Command(async () => this.ClearFilters()));
             }
         }
-        public Command<Command> AppliquerCommand
+        public Command<ICommand> AppliquerCommand
         {
             get
             {
-                return _appliquerCommand ?? (_appliquerCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, null)));
+                return _appliquerCommand ?? (_appliquerCommand = new Command<ICommand>(async (cmd) => await ExecuteCommand(cmd, null)));
             }
         }
-        public Command<Command> AnnulerCommand
+        public Command<ICommand> AnnulerCommand
         {
             get
             {
-                return _annulerCommand ?? (_annulerCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, null)));
+                return _annulerCommand ?? (_annulerCommand = new Command<ICommand>(async (cmd) => await ExecuteCommand(cmd, null)));
             }
         }
 
@@ -515,11 +516,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
             return where;
         }
 
-        public async Task ExecuteCommand(Command cmd, object parameter)
+        public async Task ExecuteCommand(ICommand cmd, object parameter)
         {
             if (cmd != null)
             {
-                await cmd.ExecuteAsync(parameter);
+                if (cmd.GetType() == typeof(Command))
+                {
+                    await ((Command)cmd).ExecuteAsync(parameter);
+                }
+                else
+                {
+                    cmd.Execute(parameter);
+                }
             }
         }
 

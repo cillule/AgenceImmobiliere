@@ -39,10 +39,10 @@
             <Setter Property="HorizontalContentAlignment" Value="Right" />
         </Style>
         <Style x:Key="intTextBox" TargetType="TextBox" BasedOn="{StaticResource numericTextBox}">
-            <EventSetter Event="PreviewTextInput" Handler="IntValidationTextBox" />
+            <!--<EventSetter Event="PreviewTextInput" Handler="IntValidationTextBox" />-->
         </Style>
         <Style x:Key="doubleTextBox" TargetType="TextBox" BasedOn="{StaticResource numericTextBox}">
-            <EventSetter Event="PreviewTextInput" Handler="DoubleValidationTextBox" />
+            <!--<EventSetter Event="PreviewTextInput" Handler="DoubleValidationTextBox" />-->
         </Style>
 
         <Style x:Key="uniteTextBlock" TargetType="TextBlock">
