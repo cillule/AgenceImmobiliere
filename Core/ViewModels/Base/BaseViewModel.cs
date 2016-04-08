@@ -30,19 +30,32 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
         {
             get { return _errors; }
         }
-        public TSearchCriteria CriteresRecherche
+        
+        protected BaseViewModel()
         {
-            get { return _criteria; }
+            Initialize();
         }
+        //protected BaseViewModel(DataAccess.Connection localConnection, IContractAsync distantService, bool serviceAvailable, Parameters parameters)
+        //{
+        //    this._localConnection = localConnection;
+        //    this._distantService = distantService;
+        //    this._serviceAvailable = serviceAvailable;
+        //    this._criteria = new TSearchCriteria();
+        //    this._parameters = parameters;
+        //    this._errors = new Tools.ErrorsList();
+        //}
 
-        protected BaseViewModel(DataAccess.Connection localConnection, IContractAsync distantService, bool serviceAvailable, Parameters parameters)
+        private async Task Initialize()
         {
-            this._localConnection = localConnection;
-            this._distantService = distantService;
-            this._serviceAvailable = serviceAvailable;
-            this._criteria = new TSearchCriteria();
-            this._parameters = parameters;
             this._errors = new Tools.ErrorsList();
+            this._criteria = new TSearchCriteria();
+
+            this._localConnection = await DataAccess.Connection.GetCurrent();
+            this._errors.AddRange(this._localConnection.Errors);
+
+            this._distantService = Connection.DistantService;
+            this._serviceAvailable = Connection.ServiceAvailable;
+            this._parameters = Connection.Parameters;
         }
 
 
@@ -58,7 +71,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
         protected async Task<DataAccess.SearchResult<TModel>> GetList(long? currentPage, long? itemsCountOnPage)
         {
-            return await GetList(this._localConnection, this._distantService, this._serviceAvailable, this.CriteresRecherche, this.Erreurs, currentPage, itemsCountOnPage);
+            return await GetList(this._localConnection, this._distantService, this._serviceAvailable, this._criteria, this.Erreurs, currentPage, itemsCountOnPage);
         }
 
         protected async Task<TModel> GetDetails(long id)
@@ -363,13 +376,13 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
                 errors.AddRange(localConnection.Errors);
                 if (!errors.IsEmpty) return null;
 
-                if (typeof(T2) == typeof(Model.BienImmobilier))
+                if (typeof(TModel) == typeof(Model.BienImmobilier))
                 {
                     details.Result2 = await localConnection.SelectItems<Model.PhotoBienImmobilier, long>(DataAccess.Const.DB_PHOTO_IDBIEN_COLNAME, id) as T2;
                     errors.AddRange(localConnection.Errors);
                     if (!errors.IsEmpty) return null;
                 }
-                else if (typeof(T2) == typeof(Model.Utilisateur))
+                else if (typeof(TModel) == typeof(Model.Utilisateur))
                 {
                     details.Result2 = await localConnection.SelectItem<Model.Personne, long>(DataAccess.Const.DB_UTILISATEUR_IDPERSONNE_COLNAME, id) as T2;
                     errors.AddRange(localConnection.Errors);

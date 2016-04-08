@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using SQLite.Net.Attributes;
 
@@ -225,5 +226,88 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
             }
             return nom;
         }
+
+        internal static Array ListeChamps<T>() where T : class
+        {
+            List<int> result = new List<int>();
+            Type t = typeof(T);
+
+            foreach (int valeur in Enum.GetValues(typeof(Enums.ChampElement)))
+            {
+                switch ((Enums.ChampElement)valeur)
+                {
+                    case Enums.ChampElement.Adresse:
+                    case Enums.ChampElement.CodePostal:
+                    case Enums.ChampElement.Ville:
+                    case Enums.ChampElement.Altitude:
+                    case Enums.ChampElement.Latitude:
+                    case Enums.ChampElement.Longitude:
+                        if (t == typeof(Model.AdresseBase) || Tools.Type.TypeIsChildOf<Model.AdresseBase>(t))
+                            result.Add(valeur);
+                        break;
+
+                    case Enums.ChampElement.NomUtilisateurCreation:
+                    case Enums.ChampElement.DateHeureCreation:
+                    case Enums.ChampElement.DateHeureModification:
+                        if (t == typeof(Model.AppartenanceBase) || Tools.Type.TypeIsChildOf<Model.AppartenanceBase>(t))
+                            result.Add(valeur);
+                        break;
+
+                    case Enums.ChampElement.Id:
+                        if (t == typeof(Model.ModeleBase) || Tools.Type.TypeIsChildOf<Model.ModeleBase>(t))
+                            result.Add(valeur);
+                        break;
+
+                    case Enums.ChampElement.DateMiseEnTransaction:
+                    case Enums.ChampElement.DateTransaction:
+                    case Enums.ChampElement.Description:
+                    case Enums.ChampElement.EnergieChauffage:
+                    case Enums.ChampElement.IdAcquereur:
+                    case Enums.ChampElement.IdPersonne:
+                    case Enums.ChampElement.IdProprietaire:
+                    case Enums.ChampElement.MontantCharges:
+                    case Enums.ChampElement.MontantHonorairesMensuels:
+                    case Enums.ChampElement.MontantHonorairesTransaction:
+                    case Enums.ChampElement.NbEtages:
+                    case Enums.ChampElement.NbPieces:
+                    case Enums.ChampElement.IdCommercial:
+                    case Enums.ChampElement.NumEtage:
+                    case Enums.ChampElement.PrixProprietaire:
+                    case Enums.ChampElement.Surface:
+                    case Enums.ChampElement.Titre:
+                    case Enums.ChampElement.TransactionEffectuee:
+                    case Enums.ChampElement.TypeChauffage:
+                    case Enums.ChampElement.TypeBien:
+                    case Enums.ChampElement.TypeTransaction:
+                        if (t == typeof(Model.BienImmobilier) || Tools.Type.TypeIsChildOf<Model.BienImmobilier>(t))
+                            result.Add(valeur);
+                        break;
+
+                    case Enums.ChampElement.MotDePasseCrypte:
+                    case Enums.ChampElement.NomUtilisateur:
+                        if (t == typeof(Model.Utilisateur) || Tools.Type.TypeIsChildOf<Model.Utilisateur>(t))
+                            result.Add(valeur);
+                        break;
+
+                    case Enums.ChampElement.Mail:
+                    case Enums.ChampElement.Nom:
+                    case Enums.ChampElement.NomNaissance:
+                    case Enums.ChampElement.NumeroPortable:
+                    case Enums.ChampElement.NumeroTelephone:
+                    case Enums.ChampElement.Prenom:
+                    case Enums.ChampElement.Qualite:
+                    case Enums.ChampElement.VilleNaissance:
+                    case Enums.ChampElement.DateNaissance:
+                        if (t == typeof(Model.Personne) || Tools.Type.TypeIsChildOf<Model.Personne>(t))
+                            result.Add(valeur);
+                        break;
+
+                }
+            }
+
+            return result.ToArray();
+        }
+
+
     }
 }

@@ -18,12 +18,19 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
         public static string _endpointConfigurationName;
         public static string _endpointConfigurationAddress;
 
+        private static IContractAsync _distantService;
+        public static IContractAsync DistantService { get { return _distantService; } private set { _distantService = value; } }
+
+        private static bool _serviceAvailable;
+        public static bool ServiceAvailable { get { return _serviceAvailable; } private set { _serviceAvailable = value; } }
+
+        private static Parameters _parameters;
+        public static Parameters Parameters { get { return _parameters; } private set { _parameters = value; } }
+
+
         protected bool _working;
         protected bool _initialized;
         protected DataAccess.Connection _localConnection;
-        protected IContractAsync _distantService;
-        protected bool _serviceAvailable;
-        protected Parameters _parameters;
         protected ObservableCollection<Model.Utilisateur> _usersList;
         protected Model.Utilisateur _user;
         protected string _password;
@@ -31,8 +38,8 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
         protected ErrorsList _warnings;
 
         private EventBindingCommand<EventArgs> _initializeCommand;
-        private Command<ICommand> _connectUserCommand;
-        private Command _disconnectUserCommand;
+        private Command<Command> _connectUserCommand;
+        private Command<Command> _disconnectUserCommand;
 
 
         public bool TraitementEnCours
@@ -123,18 +130,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
                 return _initializeCommand ?? (_initializeCommand = new EventBindingCommand<EventArgs>(async arg => await Initialize(arg) ));
             }
         }
-        public Command<ICommand> ConnectUserCommand
+        public Command<Command> ConnectUserCommand
         {
             get
             {
-                return _connectUserCommand ?? (_connectUserCommand = new Command<ICommand>(async (cmd) => await ConnectUser(cmd)));
+                return _connectUserCommand ?? (_connectUserCommand = new Command<Command>(async (cmd) => await ConnectUser(cmd)));
             }
         }
-        public Command DisconnectUserCommand
+        public Command<Command> DisconnectUserCommand
         {
             get
             {
-                return _disconnectUserCommand ?? (_disconnectUserCommand = new Command(async () => await DisconnectUser()));
+                return _disconnectUserCommand ?? (_disconnectUserCommand = new Command<Command>(async (cmd) => await DisconnectUser(cmd)));
             }
         }
 
@@ -142,12 +149,13 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
         public Connection() : base()
         {
+            _distantService = null;
+            _serviceAvailable = false;
+            _parameters = null;
+
             this._working = false;
             this._initialized = false;
             this._localConnection = null;
-            this._distantService = null;
-            this._serviceAvailable = false;
-            this._parameters = null;
             this._usersList = null;
             this._user = null;
             this._password = "";
@@ -171,7 +179,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             this.Erreurs.AddRange(appInitializer.Errors, "Erreurs", this);
             this.Parametres = appInitializer.Parameters;
             this.ServiceDistantDisponible = appInitializer.DistantServiceAvailable;
-            this._distantService = appInitializer.DistantService;
+            _distantService = appInitializer.DistantService;
             this._localConnection = appInitializer.LocalConnection;
             if (!appInitialized)
             {
@@ -187,17 +195,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             {
                 this.Erreurs.Add("Il n'existe aucun utilisateur dans la base de données !");
             }
+            this.Utilisateur = _localConnection.ConnectedUser;
 
             this.InitialisationTerminee = true;
             this.TraitementEnCours = false;
         }
 
-        public async Task ConnectUser(ICommand redirectCommand)
+        public async Task ConnectUser(Command redirectCommand)
         {
             if (UtilisateurEstConnecte && (_user == null || _user.NomUtilisateur.ToUpper() != _localConnection.ConnectedUserName.ToUpper())) return;
             if (UtilisateurEstConnecte)
             {
-                DisconnectUser();
+                await DisconnectUser(null);
                 if (!this.Erreurs.IsEmpty) return;
             }
 
@@ -223,13 +232,13 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             }
 
             // Connexion à la base distante
-            if (this._serviceAvailable)
+            if (_serviceAvailable)
             {
                 try
                 {
                     OperationResult result;
-                    result = await this._distantService.ConnecterUtilisateurAsync(this.Utilisateur.NomUtilisateur, password);
-                    if (!result.Success)
+                    result = await _distantService.ConnecterUtilisateurAsync(this.Utilisateur.NomUtilisateur, password);
+                    if (!result.Success && !result.Errors.IsEmpty)
                     {
                         this.Erreurs.AddRange(result.Errors, "Erreurs", this);
                         this.TraitementEnCours = false;
@@ -246,10 +255,10 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             // Synchro si besoin
             DateTime lastConnection = DateTime.Now;
-            if (this._serviceAvailable && this.Parametres.DateHeureDerniereSynchro != this.Parametres.DateHeureDerniereConnexion)
+            if (_serviceAvailable && this.Parametres.DateHeureDerniereSynchro != this.Parametres.DateHeureDerniereConnexion)
             {
                 ErrorsList erreurs = new ErrorsList();
-                await BaseViewModel<Model.Utilisateur, ViewModels.Utilisateur.SearchCriteria>.SynchronizeDistantToLocal(this._localConnection, this._distantService, this._serviceAvailable, this.Parametres, erreurs);
+                await BaseViewModel<Model.Utilisateur, ViewModels.Utilisateur.SearchCriteria>.SynchronizeDistantToLocal(this._localConnection, _distantService, _serviceAvailable, this.Parametres, erreurs);
                 this.Erreurs.AddRange(erreurs, "Erreurs", this);
                 if (!this.Erreurs.IsEmpty)
                 {
@@ -272,11 +281,11 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             if (this.Erreurs.IsEmpty && redirectCommand != null)
             {
-                redirectCommand.Execute(null);
+                await redirectCommand.ExecuteAsync(null);
             }
         }
 
-        public async Task DisconnectUser()
+        public async Task DisconnectUser(Command redirectCommand)
         {
             if (!UtilisateurEstConnecte) return;
 
@@ -293,13 +302,13 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             }
 
             // Déconnexion de la base distante
-            if (this._serviceAvailable)
+            if (_serviceAvailable)
             {
                 try
                 {
                     OperationResult result;
-                    result = await this._distantService.DeconnecterUtilisateurAsync(this.Utilisateur.NomUtilisateur);
-                    if (!result.Success)
+                    result = await _distantService.DeconnecterUtilisateurAsync(this.Utilisateur.NomUtilisateur);
+                    if (!result.Success && !result.Errors.IsEmpty)
                     {
                         this.Erreurs.AddRange(result.Errors, "Erreurs", this);
                         this.TraitementEnCours = false;
@@ -316,6 +325,11 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             OnPropertyChanged("UtilisateurEstConnecte");
             this.TraitementEnCours = false;
+
+            if (this.Erreurs.IsEmpty && redirectCommand != null)
+            {
+                await redirectCommand.ExecuteAsync(null);
+            }
         }
 
     }

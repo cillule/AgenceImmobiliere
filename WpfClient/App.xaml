@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient"
              xmlns:c="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient.Converters"
+             xmlns:params="clr-namespace:Oyosoft.AgenceImmobiliere.WpfClient.Converters.Parameters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="MainWindow.xaml">
+             xmlns:win="clr-namespace:System.Windows;assembly=PresentationFramework"
+             StartupUri="Views/ConnectionWindow.xaml"
+             Startup="Application_Startup">
     <Application.Resources>
         <c:BoolToVisibilityConverter x:Key="visibilityConverter" />
         <c:ObjectToBooleanConverter x:Key="boolConverter" />
@@ -14,6 +17,67 @@
         <c:NumericToVisibilityConverter x:Key="numVisibilityConverter" />
         <c:DateToStringConverter x:Key="dateConverter" />
         <c:ObjectToStringConverter x:Key="objStringConverter" />
+        <!--<params:OpenWindowConverter x:Key="openWindowConverter" />
+        <params:ShowDialogConverter x:Key="showDialogConverter" />-->
+
+        <ObjectDataProvider x:Key="modalValue"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="params:OpenWindowConverter+OpenMode" />
+                <sys:String>Modal</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="notModalValue"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="params:OpenWindowConverter+OpenMode" />
+                <sys:String>NotModal</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="closeParentValue"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="params:OpenWindowConverter+OpenMode" />
+                <sys:String>CloseParent</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="messageboxButtonYesNo"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="win:MessageBoxButton" />
+                <sys:String>YesNo</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="messageboxImageQuestion"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="win:MessageBoxImage" />
+                <sys:String>Question</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="messageboxResultYes"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="win:MessageBoxResult" />
+                <sys:String>Yes</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="messageboxResultNo"
+                            MethodName="Parse" 
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="win:MessageBoxResult" />
+                <sys:String>No</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        
 
         <Style TargetType="TextBlock" x:Key="libelle">
             <Setter Property="TextAlignment" Value="Right"/>

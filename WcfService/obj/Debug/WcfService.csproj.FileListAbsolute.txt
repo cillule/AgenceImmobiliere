@@ -22,3 +22,27 @@ C:\Tmp\IUT LP\Projet Visual Studio\WcfService\bin\Debug\Microsoft.Threading.Task
 C:\Tmp\IUT LP\Projet Visual Studio\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
 C:\Tmp\IUT LP\Projet Visual Studio\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Tmp\IUT LP\Projet Visual Studio\WcfService\bin\Debug\sqlite3.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\sqlite3.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Oyosoft.AgenceImmobiliere.WcfService.dll.config
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Oyosoft.AgenceImmobiliere.WcfService.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Oyosoft.AgenceImmobiliere.WcfService.pdb
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Oyosoft.AgenceImmobiliere.Core.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\PCLStorage.Abstractions.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\PCLStorage.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\SQLite.Net.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\SQLite.Net.Platform.Generic.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\SQLite.Net.Platform.Win32.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\SQLite.Net.Async.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\JetBrains.Annotations.PCL328.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Oyosoft.AgenceImmobiliere.Core.pdb
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\PCLStorage.xml
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\bin\Debug\PCLStorage.Abstractions.xml
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\obj\Debug\WcfService.csprojResolveAssemblyReference.cache
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\obj\Debug\Oyosoft.AgenceImmobiliere.WcfService.dll
+C:\SourcesGitHub\AgenceImmobiliere\WcfService\obj\Debug\Oyosoft.AgenceImmobiliere.WcfService.pdb

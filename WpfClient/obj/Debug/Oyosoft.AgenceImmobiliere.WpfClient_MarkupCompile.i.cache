@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\SourcesGitHub\AgenceImmobiliere\WpfClient\App.xaml
-3-809608757
+51949664558
 
-28-1438285003
+32-1399052128
 70-232332766
-Controls\ProgressRing.xaml;ListeBiensWindow.xaml;MainWindow.xaml;
+Controls\ProgressRing.xaml;Views\DetailsBienWindow.xaml;Views\FiltresBiensWindow.xaml;Views\ListeBiensWindow.xaml;Views\ConnectionWindow.xaml;
 
-True
+False
 

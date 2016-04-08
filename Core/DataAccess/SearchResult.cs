@@ -11,6 +11,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
         protected long? _currentPage;
         protected long _pagesCount;
         protected long? _itemsCountOnPage;
+        protected long _selectedItemsCount;
         protected long _totalItemsCount;
         protected long _currentItemIndex;
 
@@ -36,6 +37,12 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
             set { SetProperty(ref _itemsCountOnPage, value); }
         }
         [DataMember]
+        public long SelectedItemsCount
+        {
+            get { return _selectedItemsCount; }
+            set { SetProperty(ref _selectedItemsCount, value); }
+        }
+        [DataMember]
         public long TotalItemsCount {
             get { return _totalItemsCount; }
             set { SetProperty(ref _totalItemsCount, value); }
@@ -52,6 +59,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
             this._currentPage = null;
             this._pagesCount = 0;
             this._itemsCountOnPage = null;
+            this._selectedItemsCount = 0;
             this._totalItemsCount = 0;
             this._currentItemIndex = -1;
         }

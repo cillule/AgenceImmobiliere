@@ -14,7 +14,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        protected virtual bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
             return SetProperty(this, this.PropertyChanged, ref field, value, propertyName);
         }
@@ -55,6 +55,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
             }
         }
+
 
     }
 

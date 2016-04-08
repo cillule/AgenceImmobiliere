@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Tmp\IUT LP\Projet Visual Studio\WpfClient\obj\Debug\
+C:\SourcesGitHub\AgenceImmobiliere\WpfClient\obj\Debug\
 Oyosoft.AgenceImmobiliere.WpfClient
 none
 false
 DEBUG;TRACE
-C:\Tmp\IUT LP\Projet Visual Studio\WpfClient\App.xaml
-3-809608757
+C:\SourcesGitHub\AgenceImmobiliere\WpfClient\App.xaml
+51949664558
 
-24-2091600989
-70-125224358
-Controls\ProgressRing.xaml;ListeBiensWindow.xaml;MainWindow.xaml;
+26-728336822
+70-232332766
+Controls\ProgressRing.xaml;Views\DetailsBienWindow.xaml;Views\FiltresBiensWindow.xaml;Views\ListeBiensWindow.xaml;Views\ConnectionWindow.xaml;
 
 False
 

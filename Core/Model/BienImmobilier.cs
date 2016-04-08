@@ -50,7 +50,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.Model
         public Enums.TypeTransaction TypeTransaction
         {
             get { return _typeTransaction; }
-            set { SetProperty(ref _typeTransaction, value); }
+            set { if (SetProperty(ref _typeTransaction, value)) OnPropertyChanged("PrixTotal"); }
         }
 
         [Column(Const.DB_BIEN_TYPEBIEN_COLNAME), NotNull, DataMember]
@@ -71,21 +71,26 @@ namespace Oyosoft.AgenceImmobiliere.Core.Model
         public decimal PrixProprietaire
         {
             get { return _prixProprietaire; }
-            set { SetProperty(ref _prixProprietaire, value); }
+            set { if (SetProperty(ref _prixProprietaire, value)) OnPropertyChanged("PrixTotal"); }
         }
 
         [Column(Const.DB_BIEN_MONTANTHONORAIRESTRANSACTION_COLNAME), NotNull, DataMember]
         public decimal MontantHonorairesTransaction
         {
             get { return _montantHonorairesTransaction; }
-            set { SetProperty(ref _montantHonorairesTransaction, value); }
+            set { if (SetProperty(ref _montantHonorairesTransaction, value)) OnPropertyChanged("PrixTotal"); }
         }
 
         [Column(Const.DB_BIEN_MONTANTHONORAIRESMENSUELS_COLNAME), NotNull, DataMember]
         public decimal MontantHonorairesMensuels
         {
             get { return _montantHonorairesMensuels; }
-            set { SetProperty(ref _montantHonorairesMensuels, value); }
+            set { if (SetProperty(ref _montantHonorairesMensuels, value)) OnPropertyChanged("PrixTotal"); }
+        }
+
+        public decimal PrixTotal
+        {
+            get { return (_typeTransaction == Enums.TypeTransaction.Location) ? _prixProprietaire + _montantHonorairesMensuels : _prixProprietaire + _montantHonorairesTransaction; }
         }
 
         [Column(Const.DB_BIEN_MONTANTCHARGES_COLNAME), NotNull, DataMember]

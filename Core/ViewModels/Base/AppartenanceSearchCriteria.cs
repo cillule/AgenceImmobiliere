@@ -6,7 +6,7 @@ using Oyosoft.AgenceImmobiliere.Core.DataAccess;
 namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 {
     [DataContract]
-    public class AppartenanceSearchCriteria : DataAccess.SearchCriteria
+    public abstract class AppartenanceSearchCriteria : DataAccess.SearchCriteria
     {
         #region Attributs
 
@@ -55,13 +55,26 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 
         #endregion
 
-        public AppartenanceSearchCriteria() : base()
+        public AppartenanceSearchCriteria() : base() { }
+        public AppartenanceSearchCriteria(AppartenanceSearchCriteria source) : base(source) { }
+
+        public override void ClearFilters()
         {
+            base.ClearFilters();
             this._nomUtilisateurCreation = "";
             this._dateHeureCreation1 = null;
             this._dateHeureCreation2 = null;
             this._dateHeureModification1 = null;
             this._dateHeureModification2 = null;
+        }
+        public override void CloneFilters(SearchCriteria source)
+        {
+            base.CloneFilters(source);
+            this._nomUtilisateurCreation = ((AppartenanceSearchCriteria)source).NomUtilisateurCreation;
+            this._dateHeureCreation1 = ((AppartenanceSearchCriteria)source).DateHeureCreation1;
+            this._dateHeureCreation2 = ((AppartenanceSearchCriteria)source).DateHeureCreation2;
+            this._dateHeureModification1 = ((AppartenanceSearchCriteria)source).DateHeureModification1;
+            this._dateHeureModification2 = ((AppartenanceSearchCriteria)source).DateHeureModification2;
         }
 
         protected override async Task<string> GenereWhere()

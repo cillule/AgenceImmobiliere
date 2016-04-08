@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Oyosoft.AgenceImmobiliere.Core.Tools;
 using Oyosoft.AgenceImmobiliere.Core.ViewModels;
 
 namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
@@ -13,9 +15,11 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
         protected internal class Query
         {
             internal string SqlQuery { get; set; }
+            internal string SqlCountQuery { get; set; }
             internal long? CurrentPage { get; set; }
             internal long PagesCount { get; set; }
             internal long? ItemsCountOnPage { get; set; }
+            internal long SelectedItemsCount { get; set; }
             internal long TotalItemsCount { get; set; }
             internal long CurrentItemIndex { get; set; }
 
@@ -48,19 +52,48 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
         {
             get
             {
-                if (_tris == null || _tris.Count <= 0)
+                if (_tris == null)
                     return null;
-                else
-                    return _tris[0];
+                else if (_tris.Count <= 0)
+                    _tris.Add(new Sort(Enums.ChampElement.Id, Enums.OrdreTri.Montant));
+
+                return _tris[0];
             }
         }
+        public abstract bool CriteresVides { get; }
+        public abstract Array ListeChamps { get; }
 
 
         protected SearchCriteria()
         {
+            ClearFilters();
+        }
+        protected SearchCriteria(SearchCriteria source)
+        {
+            CloneFilters(source);
+        }
+
+        public virtual void ClearFilters()
+        {
             this._id = -1;
             this._tris = new ObservableCollection<Sort>();
             this._tris.Add(new Sort());
+        }
+        public virtual void CloneFilters(SearchCriteria source)
+        {
+            this._id = source.Id;
+            this._tris = new ObservableCollection<Sort>();
+            this._tris.AddRange(source.Tris);
+        }
+
+        protected override bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (base.SetProperty(ref field, value,propertyName))
+            {
+                base.OnPropertyChanged("CriteresVides");
+                return true;
+            }
+            return false;
         }
 
         internal async Task<Query> GenereQuery<T>(long? currentPage, long? itemsCountOnPage, bool checkUserConnection = true) where T : Model.ModeleBase
@@ -78,6 +111,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
 
             // Génération de la requête
             query.SqlQuery = await this.GenereQuery(Const.NomTableSelonType<T>(), query, where, GenereOrderBy());
+            query.SqlCountQuery = await this.GenereCountQuery(Const.NomTableSelonType<T>(), where, GenereOrderBy());
 
             return query;
         }
@@ -90,6 +124,17 @@ namespace Oyosoft.AgenceImmobiliere.Core.DataAccess
                                   tableName,
                                   where,
                                   limit.SqlQuery,
+                                  orderBy);
+
+            return query;
+        }
+        protected virtual async Task<string> GenereCountQuery(string tableName, string where, string orderBy)
+        {
+            string query = "";
+
+            query = string.Format("SELECT COUNT(*) FROM {0} {1} {2}",
+                                  tableName,
+                                  where,
                                   orderBy);
 
             return query;

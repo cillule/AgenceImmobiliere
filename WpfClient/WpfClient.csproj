@@ -81,11 +81,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ListeBiensWindow.xaml">
+    <Page Include="Views\DetailsBienWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\FiltresBiensWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListeBiensWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConnectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,7 +101,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\OpenWindowCommand.cs" />
     <Compile Include="Controls\ProgressRing.xaml.cs">
       <DependentUpon>ProgressRing.xaml</DependentUpon>
     </Compile>
@@ -101,23 +108,32 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="Converters\ComboBoxEmptyItemConverter.cs" />
-    <Compile Include="Converters\ConnectionParametersConverter.cs" />
+    <Compile Include="Converters\Parameters\CloseWindowConverter.cs" />
+    <Compile Include="Converters\Parameters\OpenWindowConverter.cs" />
     <Compile Include="Converters\DateToStringConverter.cs" />
     <Compile Include="Converters\ObjectToStringConverter.cs" />
     <Compile Include="Converters\NumericToVisibilityConverter.cs" />
     <Compile Include="Converters\ObjectToBooleanConverter.cs" />
     <Compile Include="Converters\ObjectToBooleanStringConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Converters\Parameters\ShowDialogConverter.cs" />
+    <Compile Include="Converters\Parameters\ValidTextConverter.cs" />
     <Compile Include="Converters\RadioButtonConverter.cs" />
     <Compile Include="Converters\TextBoxNumericConverter.cs" />
     <Compile Include="DependencyObjects\BindablePasswordBox.cs" />
     <Compile Include="DependencyObjects\ConnectionParameters.cs" />
     <Compile Include="DependencyObjects\EventBinding.cs" />
-    <Compile Include="ListeBiensWindow.xaml.cs">
+    <Compile Include="Views\DetailsBienWindow.xaml.cs">
+      <DependentUpon>DetailsBienWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiltresBiensWindow.xaml.cs">
+      <DependentUpon>FiltresBiensWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListeBiensWindow.xaml.cs">
       <DependentUpon>ListeBiensWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\ConnectionWindow.xaml.cs">
+      <DependentUpon>ConnectionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -171,6 +187,9 @@
     <None Include="sqlite3.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

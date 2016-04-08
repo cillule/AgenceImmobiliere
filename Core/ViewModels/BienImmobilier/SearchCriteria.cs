@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Oyosoft.AgenceImmobiliere.Core.Commands;
 using Oyosoft.AgenceImmobiliere.Core.DataAccess;
 
 namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
@@ -41,6 +42,10 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
         protected long _idAcquereur;
         protected DateTime? _dateTransaction1;
         protected DateTime? _dateTransaction2;
+
+        private Command _viderFiltresCommand;
+        private Command<Command> _appliquerCommand;
+        private Command<Command> _annulerCommand;
 
         #endregion
 
@@ -248,10 +253,90 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
             set { SetProperty(ref _dateTransaction2, value); }
         }
 
+        public override bool CriteresVides
+        {
+            get
+            {
+                return this._id == -1 &&
+                       this._titreContient == "" &&
+                       this._typeTransaction == null &&
+                       this._typeBien == null &&
+                       this._descriptionContient == "" &&
+                       this._prixProprietaire1 == -1 &&
+                       this._prixProprietaire2 == -1 &&
+                       this._montantHonorairesTransaction1 == -1 &&
+                       this._montantHonorairesTransaction2 == -1 &&
+                       this._montantHonorairesMensuels1 == -1 &&
+                       this._montantHonorairesMensuels2 == -1 &&
+                       this._montantCharges1 == -1 &&
+                       this._montantCharges2 == -1 &&
+                       this._surface1 == -1 &&
+                       this._surface2 == -1 &&
+                       this._nbPieces1 == -1 &&
+                       this._nbPieces2 == -1 &&
+                       this._numEtage1 == -1 &&
+                       this._numEtage2 == -1 &&
+                       this._nbEtages1 == -1 &&
+                       this._nbEtages2 == -1 &&
+                       this._typeChauffage == null &&
+                       this._energieChauffage == null &&
+                       this._adresseContient == "" &&
+                       this._codePostal == "" &&
+                       this._ville == "" &&
+                       this._latitude == -1 &&
+                       this._longitude == -1 &&
+                       this._altitude == -1 &&
+                       this._idProprietaire == -1 &&
+                       this._idCommercial == -1 &&
+                       this._dateMiseEnTransaction1 == null &&
+                       this._dateMiseEnTransaction2 == null &&
+                       this._transactionEffectuee == null &&
+                       this._idAcquereur == -1 &&
+                       this._dateTransaction1 == null &&
+                       this._dateTransaction2 == null;
+            }
+        }
+
+        public override Array ListeChamps
+        {
+            get
+            {
+                return Const.ListeChamps<Model.BienImmobilier>();
+            }
+        }
+
+
+        public Command ViderFiltresCommand
+        {
+            get
+            {
+                return _viderFiltresCommand ?? (_viderFiltresCommand = new Command(async () => this.ClearFilters()));
+            }
+        }
+        public Command<Command> AppliquerCommand
+        {
+            get
+            {
+                return _appliquerCommand ?? (_appliquerCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, null)));
+            }
+        }
+        public Command<Command> AnnulerCommand
+        {
+            get
+            {
+                return _annulerCommand ?? (_annulerCommand = new Command<Command>(async (cmd) => await ExecuteCommand(cmd, null)));
+            }
+        }
+
         #endregion
 
-        public SearchCriteria() : base()
+        public SearchCriteria() : base() { }
+        public SearchCriteria(SearchCriteria source) : base(source) { }
+
+        public override void ClearFilters()
         {
+            base.ClearFilters();
+
             this._titreContient = "";
             this._typeTransaction = null;
             this._typeBien = null;
@@ -292,12 +377,50 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
             this._dateTransaction1 = null;
             this._dateTransaction2 = null;
         }
+        public override void CloneFilters(DataAccess.SearchCriteria source)
+        {
+            base.CloneFilters(source);
+            this._adresseContient = ((SearchCriteria)source).AdresseContient;
+
+            this._titreContient = ((SearchCriteria)source).TitreContient;
+            this._typeTransaction = ((SearchCriteria)source).TypeTransaction;
+            this._typeBien = ((SearchCriteria)source).TypeBien;
+            this._descriptionContient = ((SearchCriteria)source).DescriptionContient;
+            this._prixProprietaire1 = ((SearchCriteria)source).PrixProprietaire1;
+            this._prixProprietaire2 = ((SearchCriteria)source).PrixProprietaire2;
+            this._montantHonorairesTransaction1 = ((SearchCriteria)source).MontantHonorairesTransaction1;
+            this._montantHonorairesTransaction2 = ((SearchCriteria)source).MontantHonorairesTransaction2;
+            this._montantHonorairesMensuels1 = ((SearchCriteria)source).MontantHonorairesMensuels1;
+            this._montantHonorairesMensuels2 = ((SearchCriteria)source).MontantHonorairesMensuels2;
+            this._montantCharges1 = ((SearchCriteria)source).MontantCharges1;
+            this._montantCharges2 = ((SearchCriteria)source).MontantCharges2;
+
+            this._surface1 = ((SearchCriteria)source).Surface1;
+            this._surface2 = ((SearchCriteria)source).Surface2;
+            this._nbPieces1 = ((SearchCriteria)source).NbPieces1;
+            this._nbPieces2 = ((SearchCriteria)source).NbPieces2;
+            this._numEtage1 = ((SearchCriteria)source).NumEtage1;
+            this._numEtage2 = ((SearchCriteria)source).NumEtage2;
+            this._nbEtages1 = ((SearchCriteria)source).NbEtages1;
+            this._nbEtages2 = ((SearchCriteria)source).NbEtages2;
+            this._typeChauffage = ((SearchCriteria)source).TypeChauffage;
+            this._energieChauffage = ((SearchCriteria)source).EnergieChauffage;
+
+            this._idProprietaire = ((SearchCriteria)source).IdProprietaire;
+            this._idCommercial = ((SearchCriteria)source).IdCommercial;
+            this._dateMiseEnTransaction1 = ((SearchCriteria)source).DateMiseEnTransaction1;
+            this._dateMiseEnTransaction2 = ((SearchCriteria)source).DateMiseEnTransaction2;
+            this._transactionEffectuee = ((SearchCriteria)source).TransactionEffectuee;
+            this._idAcquereur = ((SearchCriteria)source).IdAcquereur;
+            this._dateTransaction1 = ((SearchCriteria)source).DateTransaction1;
+            this._dateTransaction2 = ((SearchCriteria)source).DateTransaction2;
+        }
 
         protected override async Task<string> GenereQuery(string tableName, Query limit, string where, string orderBy)
         {
             string query = "", qPhotoPrincipale = "";
 
-            qPhotoPrincipale = string.Format("SELECT {0} FROM {1} WHERE {2}={3} AND {4}=true",
+            qPhotoPrincipale = string.Format("SELECT {0} FROM {1} WHERE {2}={3} AND {4}=1",
                                              Const.DB_PHOTO_BASE64_COLNAME,
                                              Const.DB_PHOTO_TABLENAME,
                                              Const.DB_COMMON_ID_COLNAME,
@@ -309,7 +432,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
                                   Const.DB_PHOTO_BASE64_COLNAME,
                                   tableName,
                                   where,
-                                  limit,
+                                  limit.SqlQuery,
                                   orderBy);
 
             return query;
@@ -333,7 +456,7 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
 
             where += GenereContains(Const.DB_BIEN_DESCRIPTION_COLNAME, this.DescriptionContient);
 
-            where += GenereEqual(Const.DB_BIEN_ENERGIECHAUFFAGE_COLNAME, (int)this.EnergieChauffage, -1);
+            where += GenereEqual(Const.DB_BIEN_ENERGIECHAUFFAGE_COLNAME, (int?)this.EnergieChauffage, -1);
 
             where += GenereBetween(Const.DB_BIEN_MONTANTCHARGES_COLNAME,
                                    this.MontantCharges1,
@@ -377,11 +500,11 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
 
             where += GenereEqual(Const.DB_BIEN_TRANSACTIONEFFECTUEE_COLNAME, this.TransactionEffectuee, null);
 
-            where += GenereEqual(Const.DB_BIEN_TYPEBIEN_COLNAME, (int)this.TypeBien, -1);
+            where += GenereEqual(Const.DB_BIEN_TYPEBIEN_COLNAME, (int?)this.TypeBien, -1);
 
-            where += GenereEqual(Const.DB_BIEN_TYPECHAUFFAGE_COLNAME, (int)this.TypeChauffage, -1);
+            where += GenereEqual(Const.DB_BIEN_TYPECHAUFFAGE_COLNAME, (int?)this.TypeChauffage, -1);
 
-            where += GenereEqual(Const.DB_BIEN_TYPETRANSACTION_COLNAME, (int)this.TypeTransaction, -1);
+            where += GenereEqual(Const.DB_BIEN_TYPETRANSACTION_COLNAME, (int?)this.TypeTransaction, -1);
 
             where += GenereEqual(Const.DB_BIEN_IDACQUEREUR_COLNAME, this.IdAcquereur, -1);
 
@@ -390,6 +513,14 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.BienImmobilier
             where += GenereEqual(Const.DB_BIEN_IDPROPRIETAIRE_COLNAME, this.IdProprietaire, -1);
 
             return where;
+        }
+
+        public async Task ExecuteCommand(Command cmd, object parameter)
+        {
+            if (cmd != null)
+            {
+                await cmd.ExecuteAsync(parameter);
+            }
         }
 
     }

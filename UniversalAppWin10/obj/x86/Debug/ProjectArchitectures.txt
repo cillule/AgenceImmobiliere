@@ -1,2 +1,2 @@
-C:\Tmp\IUT LP\Projet Visual Studio\Core\Core.csproj;neutral
-C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\UniversalAppWin10.csproj;x86
+C:\SourcesGitHub\AgenceImmobiliere\Core\Core.csproj;neutral
+C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\UniversalAppWin10.csproj;x86

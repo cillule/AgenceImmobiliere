@@ -9,16 +9,16 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>de3a5eb6-e44a-4320-86bd-16eeb8fbbed6</PackageIdentityName>
-    <IntermediateOutputPath>C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\obj\x86\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\bin\x86\Debug\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
       <PackagePath>entrypoint\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\loicm\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
@@ -339,64 +339,64 @@
     <AppxPackagedFile Include="C:\Users\loicm\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\Core\bin\Debug\Oyosoft.AgenceImmobiliere.Core.dll">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\Oyosoft.AgenceImmobiliere.Core.dll">
       <PackagePath>Oyosoft.AgenceImmobiliere.Core.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\Core\bin\Debug\PCLStorage.Abstractions.dll">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\PCLStorage.Abstractions.dll">
       <PackagePath>PCLStorage.Abstractions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\Core\bin\Debug\PCLStorage.dll">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\PCLStorage.dll">
       <PackagePath>PCLStorage.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\Core\bin\Debug\SQLite.Net.Async.dll">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\SQLite.Net.Async.dll">
       <PackagePath>SQLite.Net.Async.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\Core\bin\Debug\JetBrains.Annotations.PCL328.dll">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\Core\bin\Debug\JetBrains.Annotations.PCL328.dll">
       <PackagePath>JetBrains.Annotations.PCL328.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\SQLite.UWP.2015\3.11.0\Redist\Debug\x86\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\bin\x86\Debug\Oyosoft.AgenceImmobiliere.UniversalAppWin10.xr.xml">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Oyosoft.AgenceImmobiliere.UniversalAppWin10.xr.xml">
       <PackagePath>Oyosoft.AgenceImmobiliere.UniversalAppWin10.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Tmp\IUT LP\Projet Visual Studio\UniversalAppWin10\bin\x86\Debug\Core\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
+    <AppxPackagedFile Include="C:\SourcesGitHub\AgenceImmobiliere\UniversalAppWin10\bin\x86\Debug\Core\Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe">
       <PackagePath>Oyosoft.AgenceImmobiliere.UniversalAppWin10.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

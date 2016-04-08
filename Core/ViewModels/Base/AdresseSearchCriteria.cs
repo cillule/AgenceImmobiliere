@@ -6,7 +6,7 @@ using Oyosoft.AgenceImmobiliere.Core.DataAccess;
 namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
 {
     [DataContract]
-    public class AdresseSearchCriteria : AppartenanceSearchCriteria
+    public abstract class AdresseSearchCriteria : AppartenanceSearchCriteria
     {
         #region Attributs
 
@@ -62,17 +62,31 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels
             get { return _altitude; }
             set { SetProperty(ref _altitude, value); }
         }
-        
+
         #endregion
 
-        public AdresseSearchCriteria() : base()
+        public AdresseSearchCriteria() : base() { }
+        public AdresseSearchCriteria(AdresseSearchCriteria source) : base(source) { }
+
+        public override void ClearFilters()
         {
+            base.ClearFilters();
             this._adresseContient = "";
             this._codePostal = "";
             this._ville = "";
             this._latitude = -1;
             this._longitude = -1;
             this._altitude = -1;
+        }
+        public override void CloneFilters(SearchCriteria source)
+        {
+            base.CloneFilters(source);
+            this._adresseContient = ((AdresseSearchCriteria)source).AdresseContient;
+            this._codePostal = ((AdresseSearchCriteria)source).CodePostal;
+            this._ville = ((AdresseSearchCriteria)source).Ville;
+            this._latitude = ((AdresseSearchCriteria)source).Latitude;
+            this._longitude = ((AdresseSearchCriteria)source).Longitude;
+            this._altitude = ((AdresseSearchCriteria)source).Altitude;
         }
 
         protected override async Task<string> GenereWhere()

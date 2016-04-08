@@ -8,5 +8,20 @@ namespace Oyosoft.AgenceImmobiliere.Core.ViewModels.Utilisateur
 {
     public class SearchCriteria : DataAccess.SearchCriteria
     {
+        public override bool CriteresVides
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override Array ListeChamps
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

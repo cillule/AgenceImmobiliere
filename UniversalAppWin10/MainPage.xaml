@@ -68,7 +68,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Style="{StaticResource libelle}" Text="Utilisateur :" />
-            <ComboBox Grid.Row="1" Margin="0,5" ItemsSource="{Binding Utilisateurs}" DisplayMemberPath="NomUtilisateur" SelectedItem="{Binding Utilisateur}" />
+            <ComboBox Grid.Row="1" Margin="0,5" ItemsSource="{Binding Utilisateurs}" DisplayMemberPath="NomUtilisateur" SelectedItem="{Binding Utilisateur, Mode=TwoWay}" />
 
             <TextBlock Grid.Row="2" Style="{StaticResource libelle}" Text="Mot de passe :" />
             <PasswordBox Grid.Row="3" Margin="0,5" Password="{Binding MotDePasse, Mode=TwoWay}" />

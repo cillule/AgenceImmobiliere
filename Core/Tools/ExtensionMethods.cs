@@ -31,6 +31,11 @@ namespace Oyosoft.AgenceImmobiliere.Core.Tools
             return false;
         }
 
+        public static void ExecuteSynchronously(this Task task)
+        {
+            var ta = task.GetAwaiter();
+            ta.GetResult();
+        }
         public static T ExecuteSynchronously<T>(this Task<T> task)
         {
             var ta = task.GetAwaiter();

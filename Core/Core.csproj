@@ -87,7 +87,9 @@
     <Compile Include="Commands\GenericCommand.cs" />
     <Compile Include="Commands\GenericEventBindingArgs.cs" />
     <Compile Include="Commands\GenericEventBindingCommand.cs" />
-    <Compile Include="ViewModels\BienImmobilier\ListViewModel.cs" />
+    <Compile Include="ViewModels\BienImmobilier\Details.cs" />
+    <Compile Include="ViewModels\BienImmobilier\List.cs" />
+    <Compile Include="ViewModels\BienImmobilier\ListAndDetails.cs" />
     <Compile Include="ViewModels\BienImmobilier\SearchCriteria.cs" />
     <Compile Include="ViewModels\Client\SearchCriteria.cs" />
     <Compile Include="ViewModels\Autres\Parameters.cs" />

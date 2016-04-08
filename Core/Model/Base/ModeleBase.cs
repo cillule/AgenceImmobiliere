@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Reflection;
 using SQLite.Net.Attributes;
 using Oyosoft.AgenceImmobiliere.Core.DataAccess;
 using Oyosoft.AgenceImmobiliere.Core.ViewModels;
@@ -22,6 +23,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.Model
         {
             get { return _id; }
             private set { SetProperty(ref _id, value); }
+        }
+
+        [DataMember]
+        public Array ListeChamps
+        {
+            get
+            {
+                MethodInfo method = typeof(Const).GetRuntimeMethod("ListeChamps", new Type[] { });
+                MethodInfo genericMethod = method.MakeGenericMethod(this.GetType());
+                return (Array)genericMethod.Invoke(this, null);
+            }
+            private set { }
         }
 
         #endregion

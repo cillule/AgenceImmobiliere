@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Oyosoft.AgenceImmobiliere.Core.Tools;
 
 namespace Oyosoft.AgenceImmobiliere.Core.Commands
 {
@@ -38,11 +39,18 @@ namespace Oyosoft.AgenceImmobiliere.Core.Commands
             return _canExecute == null || _canExecute();
         }
 
-        public virtual async void Execute(object parameter)
+        public virtual void Execute(object parameter)
         {
             if (CanExecute(parameter) && _execute != null)
             {
                 _execute();
+            }
+        }
+        public virtual async Task ExecuteAsync(object parameter)
+        {
+            if (CanExecute(parameter) && _execute != null)
+            {
+                await _execute();
             }
         }
     }
